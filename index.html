@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This is my Bucketlist!</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        button {
+            width: 200px;
+            height: 100px;
+            font-size: 1.5em;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        #content {
+            margin: 10px;
+        }
+        .container {
+            border-style: solid;
+            background-color: #aaf0d1;
+            height: auto;
+            width: 700px;
+            margin-top: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="content-list">
+            <h2 id="title">Hi There! This is my Bucketlist!</h2>
+            <ul id="bucketList">
+                <li>Eat different kind of foods</li>
+                <li>Buy an R6</li>
+                <li>Achieve financial freedom</li>
+                <li>Enter Heaven</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Input Field -->
+    <p>
+        Add New: <input type="text" id="newItem" placeholder="Enter new item">
+    </p>
+
+    <!-- Buttons -->
+    <button id="btnAddItem" onclick="addNewItem()">Add Item</button>
+    <button id="btnChangeFont" onclick="changeFontFamily()">Change Font</button>
+    <button id="btnMakeBold" onclick="makeItemsBold()">Make Bold</button>
+
+    <script>
+        function addNewItem() {
+            var myInput = document.getElementById("newItem").value.trim();
+            if (myInput === "") {
+                alert("Please enter a valid item.");
+                return;
+            }
+
+            var ul = document.getElementById('bucketList');
+            var li = document.createElement('li');
+            li.textContent = myInput;
+            ul.appendChild(li);
+            document.getElementById("newItem").value = ""; 
+        }
+
+        function changeFontFamily() {
+            var listItems = document.querySelectorAll("#bucketList li");
+            listItems.forEach(item => {
+                item.style.fontFamily = "Courier New";
+            });
+        }
+
+        function makeItemsBold() {
+            var listItems = document.querySelectorAll("#bucketList li");
+            listItems.forEach(item => {
+                item.style.fontWeight = "bold";
+            });
+        }
+    </script>
+
+</body>
+</html>
